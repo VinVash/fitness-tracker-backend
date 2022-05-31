@@ -19,7 +19,7 @@ app.use(
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 const startServer = async () => {
   await mongoConnect();
