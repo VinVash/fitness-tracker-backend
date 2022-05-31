@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 require("dotenv").config({ path: "../.env" });
 
-const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL =
+  "mongodb+srv://vinamra:vinamra@cluster0.gulug.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connection.once("open", () => {
   console.log("Connection is ready!");
