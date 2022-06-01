@@ -9,15 +9,26 @@ const bodyparser = require("body-parser");
 
 const app = express();
 
+const whitelist = [
+  "http://localhost:3000",
+  "https://clever-fudge-fd4691.netlify.app",
+];
+
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
 // middleware
 // app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
-);
+app.use(cors(corsOptions));
 
 // routes
 app.use("/api/users", userRoutes);
