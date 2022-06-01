@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User } = require("../models/user");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
+const checkToken = require("../middleware/checkToken");
 
 router.post("/", async (req, res) => {
   try {
