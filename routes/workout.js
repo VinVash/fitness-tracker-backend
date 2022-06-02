@@ -27,7 +27,11 @@ router.post("/create-workout", checkToken, async (req, res) => {
 });
 
 router.post("/get-workout", checkToken, async (req, res) => {
-  const workouts = await Workout.find({ email: req.body.email });
+  const receivedDate = req.body.date ? req.body.date : formatDate(new Date());
+  const workouts = await Workout.find({
+    email: req.body.email,
+    date: receivedDate,
+  });
   if (!workouts) return res.status(404).send({ message: "no workouts found" });
   else
     return res
