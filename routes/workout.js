@@ -28,7 +28,6 @@ router.post("/create-workout", checkToken, async (req, res) => {
 
 router.post("/get-workout", checkToken, async (req, res) => {
   const receivedDate = req.body.date ? req.body.date : formatDate(new Date());
-  console.log(receivedDate);
   const workouts = await Workout.find({
     email: req.body.email,
     date: receivedDate,
