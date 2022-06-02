@@ -7,14 +7,15 @@ const padTo2Digits = (num) => {
 };
 
 const formatDate = (date) => {
-  return [
+  return `${[
     padTo2Digits(date.getDate()),
     padTo2Digits(date.getMonth() + 1),
     date.getFullYear(),
-  ].join("/");
+  ].join("/")}`;
 };
 
 router.post("/create-workout", checkToken, async (req, res) => {
+  console.log(formatDate(new Date()));
   try {
     await new Workout({
       ...req.body,
