@@ -16,6 +16,7 @@ const formatDate = (date) => {
 
 router.post("/create-workout", checkToken, async (req, res) => {
   console.log(formatDate(new Date()));
+  console.log(typeof formatDate(new Date()));
   try {
     await new Workout({
       ...req.body,
@@ -43,7 +44,7 @@ router.post("/get-workout", checkToken, async (req, res) => {
 router.post("/get-workouts", checkToken, async (req, res) => {
   const workouts = await Workout.find({
     email: req.body.email,
-    date: req.body.date,
+    date: formatDate(new Date()),
   });
   if (!workouts) return res.status(404).send({ message: "no workouts found" });
   else
