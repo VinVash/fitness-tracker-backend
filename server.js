@@ -12,6 +12,7 @@ const app = express();
 const whitelist = [
   "http://localhost:3000",
   "https://clever-fudge-fd4691.netlify.app",
+  "https://radiant-buttercream-7e2248.netlify.app",
 ];
 
 var corsOptions = {
